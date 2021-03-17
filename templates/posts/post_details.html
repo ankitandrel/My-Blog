@@ -1,0 +1,48 @@
+{% extends 'base.html' %} 
+{% load static%} 
+{% block content %}
+<main>
+    <div class="">
+        <div class="row mt-5 mb-5">
+            <div class="col-md-8 mx-auto">
+              <div class="card p-3">
+                  <div class="heading-img">
+                      <img src="{{ posts.heading_image.url}}" alt="" class="img-fluid rounded  w-100" s">
+                  </div>
+                  <div class="blog-heading mt-2">
+                      <h1 class="display-5">{{ post.heading }}</h1>
+                  </div>
+                  <div class="blog-info">
+                      <div class="row">
+                          <div class="col-md-2 ">
+                              <div class="author-img">
+                                  <img src="{{ posts.author.profile.image.url}}" alt="" class="img-fluid " style="width: 70%; height: auto; border-radius: 50%;">
+                              </div>
+                          </div>
+                          <div class="col-md-2 d-flex align-items-center text-left">
+                              <div class="author-name_twitter ">
+                                  <div class="author-name">
+                                    {{posts.author.get_full_name}}
+                                  </div>
+                                  <div class="author-twiter">
+                                      @{{posts.author}}
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-md-8"></div>
+                      </div>
+                     
+                      <div class="blog-category mt-2">
+                          <span class="badge bg-warning text-dark">Blog Category</span>
+                          <span class="badge bg-warning text-dark">Updated On: {{posts.updated_date}}</span>
+                      </div>
+                  </div>
+                  <div class="blog mt-3">
+                      {{posts.content | safe}}
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+  </main>
+{% endblock %}

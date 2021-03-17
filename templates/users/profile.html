@@ -1,0 +1,100 @@
+
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container">
+      <div class="row mt-5 mb-5">
+        <div class="col-md-6 mx-auto card p-5">
+          <div class="blog-info">
+            <div class="row">
+                <div class="col-md-3 ">
+                    <div class="author-img">
+                        <img src="{{ user.profile.image.url }}" alt="" class="img-fluid " style="width: 100px; height: auto; border-radius: 50%;">
+                    </div>
+                </div>
+                <div class="col-md-8 d-flex align-items-center text-left">
+                    <div class="author-name_twitter ">
+                        <div class="author-name">
+                           {{user.get_full_name}}
+                        </div>
+                        <div class="author-twiter">
+                          @{{user.username}}
+                            <p class="">{{ user.email }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8"></div>
+            </div>
+           
+        </div>
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <fieldset class="form-group">
+              <legend class="border-bottom mb-4">Profile Info</legend>
+              {{ u_form|crispy }}
+              <div class="mt-1">
+                {{ p_form|crispy }}
+              </div>
+          </fieldset>
+          <div class="form-group">
+              <button class="btn btn-outline-info mt-3" type="submit">Update</button>
+          </div>
+      </form>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <legend class="border-bottom mb-4 mt-2 ">Your Post</legend>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mx-auto card p-3 mb-5 ">
+          
+          {% for post in posts %}
+          <div class="row">
+          <div class="col-md-8">
+            <div class=" p-2">
+              <a href="{% url 'post_details' post.id %}" class="text-decoration-none"><h5>{{post.heading}}</h5></a>
+            </div>
+            
+           </div>
+           <div class="col-md-4">
+            <a href="{% url 'update_post' post.id%}" class="btn btn-warning">Edit<a/>
+            <!-- <a href="{% url 'delete_post' post.id%}" class="btn btn-danger">Delete</a> -->
+            <!-- Button trigger modal -->
+            <a href="{% url 'delete_post' post.id%}" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Delete
+            </a>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Delete 
+                      Confirmation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    Are you sure to delete this post <h6 class="badge bg-warning text-dark">"{{post.heading}}"</h6>
+                  </div>
+                  <form action="{% url 'delete_post' post.id %}" method="POST">
+                    {% csrf_token%}
+                    <div class="modal-footer">
+		                  <input class="btn btn-danger" type="submit" name="Confirm" value="Confirm">
+                      <a class="btn btn-warning" href="{% url 'home' %}">Cancel</a>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+           </div>
+         </div>
+         <legend class="border-bottom mb-2 mt-2"></legend></legend>
+         {% endfor %}
+        </div>
+      </div>
+    </div>
+{% endblock content %}
