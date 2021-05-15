@@ -27,9 +27,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '-_uo_5ewoi$gd@9$32gfo5*0ip9g+648!$$@tw^lys((j%i&(1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['blogforcoders.herokuapp.com']
 
 
 # Application definition
