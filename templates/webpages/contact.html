@@ -4,13 +4,19 @@
 {% block content %}
 <main>
     <div class="container">
-        <div class="row">
-            <div class="col-md-7 mx-auto mt-3 mb-3">
-                <form action="{% url 'contact' %}" method="POST">
+        <div class="row" style="height: 100vh;">
+            <div class="col-md-7  mt-3 mb-3">
+                <!-- <form action="{% url 'contact' %}" method="POST">
                     {% csrf_token %}
                     {{ contact_form | crispy }}
                     <button type="submit" class="btn btn-success mt-3">Submit</button>
-                </form>
+                </form> -->
+                <div class="display-1">
+                    Contact Page.
+                </div>
+                <p class="lead">
+                    I will update this soon.
+                 </p>
             </div>
         </div>
     </div>

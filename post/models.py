@@ -13,7 +13,7 @@ class Post(models.Model):
         ('CSS','CSS'),
         ('Tutorials','Tutorials'),
     )
-    heading_image = models.ImageField(upload_to = 'media/post/', blank = True, default = 'default.jpg')
+    heading_image = models.URLField()
     heading = models.CharField(max_length=255)
     content = RichTextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)

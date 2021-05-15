@@ -6,7 +6,7 @@ from django.dispatch import receiver
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(default = 'default.jpg', upload_to = 'media/profile_pics/', blank = True)
+    image = models.URLField(default="https://www.dealermarketing.com/wp-content/uploads/2014/04/k15679137-default-male-and-female-facebook-profile-image-785x505.jpg")
     bio = models.CharField(max_length=255)
     city = models.CharField(max_length=50)
 

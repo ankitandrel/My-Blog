@@ -7,7 +7,7 @@
             <div class="col-md-8 mx-auto">
               <div class="card p-3">
                   <div class="heading-img">
-                      <img src="{{ posts.heading_image.url}}" alt="" class="img-fluid rounded  w-100" s">
+                      <img src="{{ posts.heading_image}}" alt="" class="img-fluid rounded  w-100" s">
                   </div>
                   <div class="blog-heading mt-2">
                       <h1 class="display-5">{{ post.heading }}</h1>
@@ -16,7 +16,7 @@
                       <div class="row">
                           <div class="col-md-2 ">
                               <div class="author-img">
-                                  <img src="{{ posts.author.profile.image.url}}" alt="" class="img-fluid " style="width: 70%; height: auto; border-radius: 50%;">
+                                  <img src="{{ posts.author.profile.image}}" alt="" class="img-fluid " style="width: 70%; height: auto; border-radius: 50%;">
                               </div>
                           </div>
                           <div class="col-md-2 d-flex align-items-center text-left">
@@ -33,7 +33,7 @@
                       </div>
                      
                       <div class="blog-category mt-2">
-                          <span class="badge bg-warning text-dark">Blog Category</span>
+                          <span class="badge bg-warning text-dark">Blog Category: </span>
                           <span class="badge bg-warning text-dark">Updated On: {{posts.updated_date}}</span>
                       </div>
                   </div>

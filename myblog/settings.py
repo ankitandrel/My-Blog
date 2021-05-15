@@ -27,9 +27,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '-_uo_5ewoi$gd@9$32gfo5*0ip9g+648!$$@tw^lys((j%i&(1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['thisismyblog2.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -52,7 +52,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    # 'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -86,16 +86,28 @@ WSGI_APPLICATION = 'myblog.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'myblog',
+#         'USER': 'postgres',
+#         'PASSWORD': "#ankit#",
+#         'HOST': "localhost",
+        
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME':env('POSTGRES_DB_NAME'),
-        'USER':env('POSTGRES_USER'),
-        'PASSWORD':env('POSTGRES_PASSWORD'),
+        'NAME': env('POSTGRES_DB_NAME'),
+        'USER': env('POSTGRES_USER'),
+        'PASSWORD': env('POSTGRES_PASSWORD'),
         'HOST': env('POSTGRES_HOST'),
         'PORT': env('POSTGRES_PORT'),
     }
 }
+
 
 
 # Password validation
@@ -144,7 +156,7 @@ STATICFILES_DIRS = [
 ]
 
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -158,14 +170,5 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 
-# S3 Bucket
 
-AWS_ACCESS_KEY_ID = env("ACCESS_KEY")
-AWS_SECRET_ACCESS_KEY = env("SECRET_KEY")
-AWS_STORAGE_BUCKET_NAME = "thisismyblog"
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = None
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
-AWS_S3_REGION_NAME = "ap-south-1"
-AWS_S3_SIGNATURE_VERSION = "s3v4"
+

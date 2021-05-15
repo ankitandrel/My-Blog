@@ -9,3 +9,6 @@ class CreatePostForm(forms.ModelForm):
         model = Post
         # fields = '__all__'
         exclude = ['author']
+        help_texts = {
+            'heading_image': "Url of Image",
+        }

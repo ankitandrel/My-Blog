@@ -18,6 +18,9 @@ class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['image', 'bio', 'city']
+        help_texts = {
+            'image': "Url of Image",
+        }
 
 class UserUpdateForm(forms.ModelForm):
 

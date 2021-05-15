@@ -10,13 +10,13 @@
       <div class="card mb-4">
         <img
           class="card-img-top"
-          src="{{ post.heading_image.url}}"
+          src="{{ post.heading_image}}"
           alt="Card image cap"
         />
 
         <div class="card-body">
           <h2 class="card-title">{{ post.heading }}</h2>
-          <p class="card-text">{{post.content | slice:":255" | safe}}</p>
+          <p class="card-text">{{post.content | slice:":255" | safe}}...</p>
           <a href="{% url 'post_details' post.id %}" class="btn btn-primary"
             >Read More &rarr;</a
           >
